@@ -70,6 +70,5 @@ public class BattleFlow : MonoBehaviour
         
         if (bgMusic != null && bgMusic.isPlaying) bgMusic.Stop();
 
-        Debug.Log("Chiến thắng rồi!");
     }
 }

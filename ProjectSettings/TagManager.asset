@@ -8,6 +8,9 @@ TagManager:
   - Bullet
   - Planet
   - PlayerRay
+  - Wall
+  - Ground
+  - Enemy
   layers:
   - Default
   - TransparentFX
