@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour
 {
-    public float flySpeed = 10f;
+    public float flySpeed = 5f;
     public int damage = 1;
-    public float lifeTime = 2f; 
+    public float lifeTime = 3f; 
 
     void Start()
     {
@@ -13,17 +13,17 @@ public class EnemyBullet : MonoBehaviour
 
     void Update()
     {
-
-        transform.Translate(Vector2.right * flySpeed * Time.deltaTime);
+        // Space.World giúp đạn luôn bay xuống dưới bất chấp việc bị xoay hướng
+        transform.Translate(Vector2.down * flySpeed * Time.deltaTime, Space.World);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-        var enemy = collision.GetComponent<EnemyScript>();
-        if (enemy != null)
+        var player = collision.GetComponent<PlayerHealth>();
+        
+        if (player != null)
         {
-            enemy.TakeDamage(damage);
+            player.TakeDamage(damage);
             Destroy(gameObject); 
             return;
         }
